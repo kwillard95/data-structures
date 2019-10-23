@@ -1,8 +1,32 @@
 var Queue = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+  var someInstance = {};
+  var storage = {};
+  var count = 1;
+  return someInstance;
 };
 
-var queueMethods = {};
+var queueMethods = {
+  enqueue: function(value) {
+    this.storage[count] = value;
+    count++;
+    return this;
+  },
 
+  dequeue: function() {
+    var lastKey = Object.keys(storage).length;
+    var value = this.storage[lastKey];
+    delete this.storage[lastKey];
+    count--;
+    return value;
+  },
+
+  size: function() {
+    var keys = Object.keys(this.storage);
+    return keys.length;
+  }
+
+};
+
+var newInstance = Queue();
+extend(newInstance, queueMethods);
 
