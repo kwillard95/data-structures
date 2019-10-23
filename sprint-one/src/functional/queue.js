@@ -15,10 +15,14 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    var lastKey = Object.keys(storage).length;
-    var value = someInstance.storage[lastKey];
-    delete someInstance.storage[lastKey];
-    count--;
+    var firstKey = Object.keys(storage)[0];
+    var value = someInstance.storage[firstKey];
+    delete someInstance.storage[firstKey];
+    for (var key in someInstance.storage){
+      var num = parseInt(key) - 1;
+      var newKey = num.toString();
+      key = newKey;
+    }
     return value;
   };
 

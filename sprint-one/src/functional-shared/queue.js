@@ -1,32 +1,40 @@
+
+
 var Queue = function() {
   var someInstance = {};
-  var storage = {};
-  var count = 1;
+  someInstance.storage = {};
+  _.extend(someInstance, queueMethods);
   return someInstance;
 };
 
 var queueMethods = {
   enqueue: function(value) {
-    this.storage[count] = value;
-    count++;
+    // if(!("storage" in this)) {
+    //   this.storage = {};
+    // }
+    var newKey = (Object.keys(this.storage).length) + 1;
+    this.storage[newKey] = value;
     return this;
   },
 
   dequeue: function() {
-    var lastKey = Object.keys(storage).length;
-    var value = this.storage[lastKey];
-    delete this.storage[lastKey];
-    count--;
+    var firstKey = Object.keys(this.storage)[0];
+    var value = this.storage[firstKey];
+    delete this.storage[firstKey];
+    for (var key in this.storage){
+      var num = parseInt(key) - 1;
+      var newKey = num.toString();
+      this.storage[newKey] = this.storage[key];
+      delete this.storage[key]
+    }
     return value;
   },
 
   size: function() {
-    var keys = Object.keys(this.storage);
-    return keys.length;
+
+  var length = Object.keys(this.storage).length;
+  return length;
+
   }
-
 };
-
-var newInstance = Queue();
-extend(newInstance, queueMethods);
 
