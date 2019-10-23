@@ -9,9 +9,6 @@ var Queue = function() {
 
 var queueMethods = {
   enqueue: function(value) {
-    // if(!("storage" in this)) {
-    //   this.storage = {};
-    // }
     var newKey = (Object.keys(this.storage).length) + 1;
     this.storage[newKey] = value;
     return this;
@@ -21,7 +18,7 @@ var queueMethods = {
     var firstKey = Object.keys(this.storage)[0];
     var value = this.storage[firstKey];
     delete this.storage[firstKey];
-    for (var key in this.storage){
+    for (var key in this.storage) {
       var num = parseInt(key) - 1;
       var newKey = num.toString();
       this.storage[newKey] = this.storage[key];
@@ -32,8 +29,8 @@ var queueMethods = {
 
   size: function() {
 
-  var length = Object.keys(this.storage).length;
-  return length;
+    var length = Object.keys(this.storage).length;
+    return length;
 
   }
 };

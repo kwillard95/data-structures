@@ -1,13 +1,12 @@
 var Stack = function() {
   var someInstance = {};
+  someInstance.storage = {};
+  _.extend(someInstance, stackMethods);
   return someInstance;
 };
 
 var stackMethods = {
   push: function(value) {
-    if(!("storage" in this)) {
-      this.storage = {};
-    }
     var newKey = (Object.keys(this.storage).length) + 1;
     this.storage[newKey] = value;
     return this;
@@ -16,7 +15,6 @@ var stackMethods = {
     var lastKey = Object.keys(this.storage).length;
     var value = this.storage[lastKey];
     delete this.storage[lastKey];
-    count--;
     return value;
   },
   size: function() {

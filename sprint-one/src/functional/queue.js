@@ -18,7 +18,7 @@ var Queue = function() {
     var firstKey = Object.keys(storage)[0];
     var value = someInstance.storage[firstKey];
     delete someInstance.storage[firstKey];
-    for (var key in someInstance.storage){
+    for (var key in someInstance.storage) {
       var num = parseInt(key) - 1;
       var newKey = num.toString();
       key = newKey;
