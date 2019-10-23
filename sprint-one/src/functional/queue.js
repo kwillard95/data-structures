@@ -16,9 +16,9 @@ var Queue = function() {
     var item = storage[0];
     delete storage[0];
     for (var key in storage) {
-      storage[(key-1)] = storage[key];
+      storage[(key - 1)] = storage[key];
     }
-    delete storage[Object.keys(storage).length-1];
+    delete storage[Object.keys(storage).length - 1];
     return item;
   };
 

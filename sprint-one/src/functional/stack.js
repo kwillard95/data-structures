@@ -13,8 +13,8 @@ var Stack = function() {
 
   someInstance.pop = function() {
     // pop the items from the top of the stack
-    var item = storage[Object.keys(storage).length-1];
-    delete storage[Object.keys(storage).length-1];
+    var item = storage[Object.keys(storage).length - 1];
+    delete storage[Object.keys(storage).length - 1];
     return item;
   };
 
