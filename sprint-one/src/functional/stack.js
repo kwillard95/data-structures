@@ -8,7 +8,6 @@ var Stack = function() {
   someInstance.push = function(value) {
     // push the items to the top of the stack
     storage[Object.keys(storage).length] = value;
-    console.log(storage);
   };
 
   someInstance.pop = function() {
