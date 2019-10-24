@@ -31,6 +31,20 @@ describe('linkedList', function() {
     expect(linkedList.head.value).to.equal(5);
   });
 
+  //when head is removed, the head should be reassigned to the next node
+  //add a few values
+  //store node that head points to
+  //delete head
+  //expect new head to equal stored node
+  it('should reassign head to next node after head is removed', function() {
+    linkedList.addToTail(1);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    var stored = linkedList.head.next;
+    linkedList.removeHead();
+    expect(linkedList.head.value).to.equal(stored.value);
+  });
+
   it('should return the value of the former head when removeHead is called', function() {
     linkedList.addToTail(4);
     expect(linkedList.removeHead()).to.equal(4);
