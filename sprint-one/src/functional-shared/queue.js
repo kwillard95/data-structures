@@ -22,7 +22,7 @@ var queueMethods = {
       var num = parseInt(key) - 1;
       var newKey = num.toString();
       this.storage[newKey] = this.storage[key];
-      delete this.storage[key]
+      delete this.storage[key];
     }
     return value;
   },
