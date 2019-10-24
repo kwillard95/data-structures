@@ -2,23 +2,23 @@ class Queue {
   constructor() {
     this.storage = {};
   }
+
   enqueue(value) {
-    var newKey = (Object.keys(this.storage).length) + 1;
-    this.storage[newKey] = value;
-    return this;
+    this.storage[Object.keys(this.storage).length] = value;
   }
 
   dequeue() {
-    var firstKey = Object.keys(this.storage)[0];
-    var value = this.storage[firstKey];
-    delete this.storage[firstKey];
+    var item = this.storage[0];
+    delete this.storage[0];
     for (var key in this.storage) {
-      var num = parseInt(key) - 1;
-      var newKey = num.toString();
-      this.storage[newKey] = this.storage[key];
-      delete this.storage[key];
+      this.storage[key - 1] = this.storage[key];
     }
-    return value;
+    delete this.storage[Object.keys(this.storage).length - 1];
+    return item;
+  }
+
+  size() {
+    return Object.keys(this.storage).length;
   }
 
   size() {

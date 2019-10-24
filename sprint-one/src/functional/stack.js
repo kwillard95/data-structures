@@ -8,25 +8,20 @@ var Stack = function() {
 
   // Implement the methods below
   someInstance.push = function(value) {
-    someInstance.storage[count] = value;
-    count++;
-    return someInstance;
+    // push the items to the top of the stack
+    storage[Object.keys(storage).length] = value;
   };
 
   someInstance.pop = function() {
-    var lastKey = Object.keys(storage).length;
-    var value = someInstance.storage[lastKey];
-    delete someInstance.storage[lastKey];
-    count--;
-    return value;
+    // pop the items from the top of the stack
+    var item = storage[Object.keys(storage).length - 1];
+    delete storage[Object.keys(storage).length - 1];
+    return item;
   };
 
   someInstance.size = function() {
-    var keys = Object.keys(someInstance.storage);
-    return keys.length;
+    return Object.keys(storage).length;
   };
 
   return someInstance;
 };
-
-var newInstance = Stack();

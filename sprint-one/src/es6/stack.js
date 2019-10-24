@@ -3,22 +3,20 @@ class Stack {
     this.storage = {};
   }
 
+
+
   push(value) {
-    var newKey = (Object.keys(this.storage).length) + 1;
-    this.storage[newKey] = value;
-    return this;
+    this.storage[Object.keys(this.storage).length] = value;
   }
 
   pop() {
-    var lastKey = Object.keys(this.storage).length;
-    var value = this.storage[lastKey];
-    delete this.storage[lastKey];
-    return value;
+    var item = this.storage[Object.keys(this.storage).length - 1];
+    delete this.storage[Object.keys(this.storage).length - 1];
+    return item;
   }
 
   size() {
-    var keys = Object.keys(this.storage);
-    return keys.length;
+    return Object.keys(this.storage).length;
   }
 
 }
