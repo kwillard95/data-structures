@@ -48,3 +48,5 @@ console.log(tree.contains(8));//.to.equal(true);
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+// addChild is constant time
+// contains is linear because we have to potentially check every node in the tree
