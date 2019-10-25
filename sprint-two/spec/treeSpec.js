@@ -47,6 +47,6 @@ describe('tree', function() {
     tree.children[0].addChild(2.5);
     tree.children[0].children[1].addChild(3);
     expect(tree.contains(3)).to.equal(true);
-  })
+  });
 
 });
