@@ -53,14 +53,14 @@ BinarySearchTree.prototype.depthFirstLog = function(callback) {
 // Insert and contains are O(log n)
 // depthFirstLog is linear O(n)
 
+//Use case: Given a list of a million numbers, write a function that takes a new number and returns the closest number in the list using your BST. Profile this against the same operation using an array.
+
 var findNearest = function(array, target) {
-  //create our tree
   var tree = BinarySearchTree(array[0]);
   array.forEach(function(item) {
     tree.insert(item);
   });
-  //search our tree
-  //var closest value
+
   var closestValue = Infinity;
   var prevDiff = Infinity;
 
@@ -79,7 +79,4 @@ var findNearest = function(array, target) {
   return closestValue;
 };
 
-var testArray = [8, 10, 3, 1, 6, 14, 7, 4, 13];
-console.log(findNearest(testArray, 12));
-
-//We would have to traverse through the entire array of potentially a million numbers in order to know the closest number. With the binary tree we only have to traverse through the levels of one path. If we were to traverse through an array the time complexity would be linear, whereas the time complexity of traversing through a binary tree is O(log n)
+//If we did not use a binary search tree for this use case, we would have to traverse through the entire array of one million numbers in order to know the closest number. With the binary tree we only have to traverse through the levels of one path. If we were to traverse through an array the time complexity would be linear, whereas the time complexity of traversing through a binary tree is O(log n)
