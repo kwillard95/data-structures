@@ -43,7 +43,7 @@ HashTable.prototype.remove = function(k) {
   var bucket = this._storage.get(index);
   for (var i = 0; i < bucket.length; i++) {
     if (bucket[i][0] === k) {
-      bucket.splice(i);
+      bucket.splice(i, 1);
     }
   }
   this.checkUsage();
@@ -62,7 +62,7 @@ HashTable.prototype.checkUsage = function() {
     this.reHash();
   }
   if (ratio < 0.25) {
-    this._limit /= 2;
+    this._limit = Math.floor(this._limit / 2);
     this.reHash();
   }
 };
