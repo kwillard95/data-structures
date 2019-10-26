@@ -24,7 +24,7 @@ Graph.prototype.removeNode = function(node) {
   var index = this.nodes.indexOf(node);
   for (var i = 0; i < this.nodes.length; i++) {
     this.removeEdge(node, this.nodes[i]);
-  }
+  } 
   this.edges.splice(index, 1);
   this.nodes.splice(index, 1);
 };
