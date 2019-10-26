@@ -14,7 +14,7 @@ BinarySearchTree.prototype.insert = function(value) {
     } else {
       this.left.insert(value);
     }
-  } else {
+  } else if (this.value < value) {
     if (!this.right) {
       this.right = node;
     } else {
@@ -37,17 +37,19 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(callback) {
-  //executes callback on each node in tree
+  callback(this.value);
+  if (this.left) {
+    this.left.depthFirstLog(callback);
+  }
+  if (this.right) {
+    this.right.depthFirstLog(callback);
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
 
- var binarySearchTree = BinarySearchTree(5);
- binarySearchTree.insert(2);
- binarySearchTree.insert(3);
- binarySearchTree.insert(7);
- binarySearchTree.insert(6);
- console.log(binarySearchTree.left.right.value);//.to.equal(3);
- console.log(binarySearchTree.contains(10));//.to.equal(true);
+// Insert and contains are O(log n)
+// depthFirstLog is linear O(n)
+
