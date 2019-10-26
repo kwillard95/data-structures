@@ -47,6 +47,15 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should not put all tuples in the same bucket', function() {
+    hashTable.insert('Steven', 'Seagal');
+    hashTable.insert('Mila', 'Kunis');
+    hashTable.insert('Zoey', 'Deschanel');
+    var index = getIndexBelowMaxForKey('Zoey', hashTable._limit);
+    var bucket = hashTable._storage.get(index);
+    expect(bucket.length).not.to.equal(3);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {
@@ -74,3 +83,6 @@ describe('hashTable', function() {
     expect(hashTable._limit).to.equal(8);
   });
 });
+
+
+//test to make sure tuples are not entering the same bucket
